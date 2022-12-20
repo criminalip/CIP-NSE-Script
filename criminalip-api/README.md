@@ -9,29 +9,29 @@ Korean: [README.kor.md](README.kor.md)
 <br/>
 
 ## Description
-The following script links Criminal IP API to Nmap script which allows you to obtain information about IP.  
+The following script links Criminal IP API to the Nmap script, allowing you to obtain information about IP.
 
 Returned Data Info
 
 - Hostname 
 - Tag info
-    - IP Usage: VPN, Scanner, Hosting, Mobile  etc
+    - IP Usage: VPN, Scanner, Hosting, Mobile  etc.
 - Category 
-    - IP Category: MISP, Phishing, Snort, Twitter, reputation etc 
+    - IP Category: MISP, Phishing, Snort, Twitter, reputation etc.
 - Country(City) 
 - IP Score(Inbound/Outbound)
     - Safe, Low, Moderate, Dangerous, Critical
 - Currently opened Port (in the last 60 days)
 - Socket type
-    - tcp, udp
+    - TCP, UDP
 - Scan Time 
     - Date of port scan
 - Product 
-    - Service used on port
+    - Service used on Port
 - Version 
     - Product version
 - CVE 
-    - Vulnerabilities found in port (Latest Top 5)
+    - Vulnerabilities found in Port (Latest Top 5)
 
 <br/>
 
@@ -41,7 +41,7 @@ Returned Data Info
 ### Install
 - - -
 
-Download criminalip-api.nse script and copy into your Nmap script folder.
+Copy the criminalip-api.nse script to your Nmap Script folder.
 
 ```
 $ git clone https://github.com/criminalip/CIP-Nse-Script.git
@@ -52,11 +52,11 @@ $ cp criminalip-api.nse NMAP_Script_HOME(ex: /usr/share/nmap/scripts/)
 ### Usage
 - - -
 
-Please follow these 2 steps before using this service.
+Please follow these two steps before using this service.
 
-1. Create an API-KEY by signing up for [Criminal IP](https://www.criminalip.io/ko)
+1. Create an API Key by signing up for [Criminal IP](https://www.criminalip.io/ko)
 
-2. You can enter your API-Key into the script file so that you don’t have to enter the API-Key every time. (Optional)
+2. You can enter your API key into the script file so that you don’t have to enter the API Key every time. (Optional)
 
 ```
 -- Set your Criminal IP API key here to avoid typing it in every time:
@@ -96,7 +96,7 @@ Pre-scan script results:
 - - -
 <br/>
 
-You can use **filename** script argument to save some of the results as a csv file.
+You can use the filename script argument to save some results as a CSV file.
 > IP, Hostname, AS_Name, Country, City, Score(Inbound), Score(Outbound)
 
 <br/>
@@ -110,17 +110,17 @@ nmap --script criminalip-api --script-args 'criminalip-api.target= target IP fil
 
 <br/>
 
-You may receive 1 of the following 3 error messages.
+You may receive 1 of the following three error messages.
 
-- Your CriminalIP API key is invalid.
+- Your Criminal IP API key is invalid.
 
-- Unexpected error occured 
+- An unexpected error occurred.
 
-- target must be an IP address
+- The target must be an IP address.
 
-First error message is when the API-key is inputted incorrectly.
+The first error message is when the API key is inputted incorrectly.
  
-Second error message is when there is an error with CIP API server. 
+The second error message is when there is an error with the CIP API server. 
 > Should this occur, please try again later or contact support@aispera.com.
  
-Third error message is when an invalid argument with no valid IP in the target variable is delivered.
+The third error message occurs when an invalid argument with no valid IP in the target variable is delivered.
