@@ -265,11 +265,9 @@ prerule = function ()
   if (resp.status == 401) then
     stdnse.verbose1("Error: Your CriminalIP API key (%s) is invalid", registry.apiKey)
     return false
-  elseif (resp.status == 414 or resp.status == 415) then
-    stdnse.verbose1("Error: You are not Criminal IP User. Please, Register First")
-    return false
+    
   elseif (resp.status ~= 200) then
-    stdnse.verbose1("Error: Unexpected error occured")  
+    stdnse.verbose1("Error: An unexpected error occured")  
     -- Prevent further stages from running
     registry.apiKey = nil
     return false
@@ -278,7 +276,7 @@ prerule = function ()
   if arg_target then
     local is_ip, err = ipOps.expand_ip(arg_target)
     if not is_ip then
-      stdnse.verbose1("Error: %s.target must be an IP address", SCRIPT_NAME)
+      stdnse.verbose1("Error: The target must be an IP address")
       return false
     end
     return true
