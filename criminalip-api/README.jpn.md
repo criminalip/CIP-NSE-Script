@@ -17,10 +17,10 @@
     - VPN、リターンされるデータ情報
 - Category 
     - MISP、フィッシング、Snort、Twitter、レピュテーションなどの IP 特徴
-- 国（都市)
+- 国（都市 )
 - IP スコア（インバウンド・アウトバウンド）
     - Safe、Low、Moderate、Dangerous、Critical
-- 開いているポート（60日を基準とする)
+- 開いているポート（60日を基準とする )
 - Socket type
     - TCP、UDP
 - Scan Time 
@@ -30,7 +30,7 @@
 - Version 
     - 製品のバージョン
 - CVE 
-    - ポートにある脆弱性（最新 Top 5)
+    - ポートにある脆弱性（最新 Top 5 )
 
 <br/>
 
