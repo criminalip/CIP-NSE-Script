@@ -56,7 +56,7 @@ $ cp criminalip-api.nse NMAP_Script_HOME(ex: /usr/share/nmap/scripts/)
 
 Please follow these two steps before using this service.
 
-1. Create an API Key by signing up for [Criminal IP](https://www.criminalip.io/ko)
+1. Create an API Key by signing up for [Criminal IP](https://www.criminalip.io)
 
 2. You can enter your API key into the script file so that you don’t have to enter the API Key every time. (Optional)
 
@@ -114,11 +114,11 @@ nmap --script criminalip-api --script-args 'criminalip-api.target= target IP fil
 
 You may receive 1 of the following three error messages.
 
-- Your Criminal IP API key is invalid.
+- Your Criminal IP API key is invalid
 
-- An unexpected error occurred.
+- An unexpected error occurred
 
-- The target must be an IP address.
+- The target must be an IP address
 
 The first error message is when the API key is inputted incorrectly.
  

@@ -21,7 +21,7 @@
     - Safe, Low, Moderate, Dangerous, Critical
 - 열려있는 Port (60일 기준)
 - Socket type
-    - tcp, udp
+    - TCP, UDP
 - Scan Time 
     - 포트가 스캔 된 날짜
 - Product 
@@ -109,7 +109,7 @@ nmap --script criminalip-api --script-args 'criminalip-api.target= target IP fil
 
 3개의 에러 메시지가 존재합니다. 
 
-- Your CriminalIP API key is invalid.
+- Your CriminalIP API key is invalid
 
 - An unexpected error occured 
 

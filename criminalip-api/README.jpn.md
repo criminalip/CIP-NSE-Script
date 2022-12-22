@@ -14,15 +14,15 @@
 
 - Hostname 
 - Tag 
-    - VPN, リターンされるデータ情報
+    - VPN、リターンされるデータ情報
 - Category 
-    - MISP, フィッシング、Snort、Twitter、レピュテーションなどの IP 特徴
-- 国（都市 
+    - MISP、フィッシング、Snort、Twitter、レピュテーションなどの IP 特徴
+- 国（都市)
 - IP スコア（インバウンド・アウトバウンド）
-    - Safe, Low, Moderate, Dangerous, Critical
-- 開いているポート（60日を基準とする
+    - Safe、Low、Moderate、Dangerous、Critical
+- 開いているポート（60日を基準とする)
 - Socket type
-    - tcp, udp
+    - TCP、UDP
 - Scan Time 
     - ポートがスキャンされた日付
 - Product 
@@ -53,7 +53,7 @@ $ cp criminalip-api.nse NMAP_Script_HOME(ex: /usr/share/nmap/scripts/)
 
 使用に先立って、2つの作業が必要です。
 
-1. [Criminal IP](https://www.criminalip.io/ko)に会員登録する後、APIキーを生成します。 
+1. [Criminal IP](https://www.criminalip.io/ja)に会員登録する後、APIキーを生成します。 
 
 2. 毎回 APIキーを入力しなくても済むように、Scriptに APIキーを入力しておくことができます。（選択)
 
@@ -95,7 +95,7 @@ Pre-scan script results:
 <br/>
 
 **filename** スクリプトの引数を用いて結果の一部を csv ファイルとして保存することができます。
-> IP, Hostname, AS_Name, Country, City, Score(Inbound), Score(Outbound)
+> IP、Hostname、AS_Name、Country、City、Score(Inbound)、Score(Outbound)
 
 <br/>
 
@@ -110,7 +110,7 @@ nmap --script criminalip-api --script-args 'criminalip-api.target= target IP fil
 
 3つのエラーメッセージがあります。
 
-- Your CriminalIP API key is invalid.
+- Your CriminalIP API key is invalid
 
 - An unexpected error occured 
 
