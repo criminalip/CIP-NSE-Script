@@ -7,29 +7,30 @@
 <br/>
 
 ## Description
-해당 스크립트는 Criminal IP API를 Nmap Script에 연동하여 IP에 대한 정보를 얻을 수 있습니다. 
+このスクリプトで Criminal IP APIを Nmap Script に連動し、IP に関する情報を得られます。
 
-반환되는 데이터 정보
+
+リターンされるデータ情報
 
 - Hostname 
 - Tag 
-    - VPN, Scanner, Hosting, Mobile 등의 IP 사용 목적
+    - VPN, リターンされるデータ情報
 - Category 
-    - MISP, Phishing, Snort, Twitter, reputation 등의 IP 성격
-- 국가(도시) 
-- IP 스코어(인바운드/아웃바운드)
+    - MISP, フィッシング、Snort、Twitter、レピュテーションなどの IP 特徴
+- 国（都市 
+- IP スコア（インバウンド・アウトバウンド）
     - Safe, Low, Moderate, Dangerous, Critical
-- 열려있는 Port (60일 기준)
+- 開いているポート（60日を基準とする
 - Socket type
     - tcp, udp
 - Scan Time 
-    - 포트가 스캔 된 날짜
+    - ポートがスキャンされた日付
 - Product 
-    - 포트에서 사용되고 있는 서비스(제품)명
+    - ポートで使用されるサービス（製品）名
 - Version 
-    - 제품의 버전
+    - 製品のバージョン
 - CVE 
-    - 포트가 가지고 있는 취약점 (최신 Top 5)
+    - ポートにある脆弱性（最新 Top 5)
 
 <br/>
 
@@ -39,7 +40,7 @@
 ### Install
 - - -
 
-criminalip-api.nse script를 당신의 Nmap Script 폴더로 복사합니다.
+criminalip-api.nse script を自分の Nmap Script フォルダーにコピーします。
 
 ```
 $ git clone https://github.com/criminalip/CIP-Nse-Script.git
@@ -50,18 +51,18 @@ $ cp criminalip-api.nse NMAP_Script_HOME(ex: /usr/share/nmap/scripts/)
 ### Usage
 - - -
 
-사용 하기에 앞서 2개의 작업이 필요합니다.
+使用に先立って、2つの作業が必要です。
 
-1. [Criminal IP](https://www.criminalip.io/ko)에 가입 후 API-Key를 생성해야 합니다. 
+1. [Criminal IP](https://www.criminalip.io/ko)に会員登録する後、APIキーを生成します。 
 
-2. 매번 API-Key를 입력하지 않도록 Script에 API-Key를 입력해 놓을 수 있습니다.(선택)
+2. 毎回 APIキーを入力しなくても済むように、Scriptに APIキーを入力しておくことができます。（選択)
 
 ```
 -- Set your Criminal IP API key here to avoid typing it in every time:
 local apiKey = ""
 ```
 
-아래 예제는 스크립트를 통해 IP를 검색한 결과입니다. 해당 IP 주소에 대한 점수, 국가 정보, as_name 등 여러 정보들을 확인할 수 있습니다. 
+下の例はスクリプトを通じてIPを検索した結果です。該当IPアドレスに関するスコア、国家情報、as_nameなどの様々な情報を確認できます。
 ```
 $  nmap --script criminalip-api --script-args 'criminalip-api.target= target IP, apikey=Your x-api-key'
 $  nmap --script criminalip-api --script-args 'criminalip-api.target= target IP' # when you set your api-key on script
@@ -93,7 +94,7 @@ Pre-scan script results:
 - - -
 <br/>
 
-**filename** 스크립트 인수를 사용하여 결과의 일부를 csv 파일로 저장할 수 있습니다.  
+**filename** スクリプトの引数を用いて結果の一部を csv ファイルとして保存することができます。
 > IP, Hostname, AS_Name, Country, City, Score(Inbound), Score(Outbound)
 
 <br/>
@@ -107,7 +108,7 @@ nmap --script criminalip-api --script-args 'criminalip-api.target= target IP fil
 
 <br/>
 
-3개의 에러 메시지가 존재합니다. 
+3つのエラーメッセージがあります。
 
 - Your CriminalIP API key is invalid.
 
@@ -118,9 +119,9 @@ nmap --script criminalip-api --script-args 'criminalip-api.target= target IP fil
 </br>
 
 
-첫 번째 에러 메시지는 API-Key를 잘못 입력하는 경우 입니다. 
+1つ目のエラーメッセージは APIキーを間違えて入力した場合に表われます。 
 
-두 번째 에러 메시지는 CIP API 서버에 장애가 발생 했을 경우 입니다.
-> 해당 에러가 발생 시 잠시 후 시도하거나 support@aispera.com 으로 문의 부탁드립니다. 
+2つ目のエラーメッセージは Criminal IP API サーバーに障害が発生した場合に表われます。
+> このエラーが発生する場合、しばらくしてもう一度試みるかまたは、 support@aispera.com よりお問い合わせお願いいたします。
 
-세 번쨰 에러 메시지는 target 변수에 IP를 넣지 않고 잘못된 인자값을 전달한 경우 입니다.
+3つ目のエラーメッセージは target 変数に IP を入力せず、間違えた引数を入れた場合に表われます。
