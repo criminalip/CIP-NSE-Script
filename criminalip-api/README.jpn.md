@@ -14,7 +14,7 @@
 
 - Hostname 
 - Tag 
-    - VPN、リターンされるデータ情報
+    - VPN、スキャナー、ホスティング、モバイルなどのIP の使用目的
 - Category 
     - MISP、フィッシング、Snort、Twitter、レピュテーションなどの IP 特徴
 - 国（都市 )
