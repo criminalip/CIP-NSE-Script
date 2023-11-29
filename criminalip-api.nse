@@ -16,7 +16,7 @@ local openssl = stdnse.silent_require "openssl"
 -- Set your Criminal IP API key here to avoid typing it in every time:
 local apiKey = ""
 
-author = "Bo Gab"
+author = "Bo Gab <bkhwang@aispera.com>"
 license = "Same as Nmap--See https://nmap.org/book/man-legal.html"
 categories = {"discovery", "safe", "external"}
 
@@ -62,7 +62,7 @@ local outFile = stdnse.get_script_args(SCRIPT_NAME .. ".filename")
 local arg_target = stdnse.get_script_args(SCRIPT_NAME .. ".target")
 
 local function lookup_target (target)
-  local response = http.get("api.criminalip.io",443,"/v1/ip/data?ip="..target.. '&full=ture', {header={['x-api-key']=registry.apiKey}})
+  local response = http.get("api.criminalip.io",443,"/v1/asset/ip/report?ip="..target.. '&full=ture', {header={['x-api-key']=registry.apiKey}})
   local stat, resp = json.parse(response.body)
   if not stat then
     stdnse.debug1("Error parsing Criminal IP response: %s", resp)
@@ -87,12 +87,15 @@ local function format_output(resp)
   local category_table = {}
   local category_list = {}
   local confirmed_time_table = {}
-  local score_to_str = {[1]='Safe',[2]='Low',[3]='Moderate',[4]='Dangerous',[5]='Critical'}
   local tag_str = {['is_vpn']='vpn',['is_cloud']='cloud',['is_proxy']='proxy',['is_tor']='tor',['is_hosting']='hosting',['is_mobile']='mobile',['is_scanner']='scanner',['is_snort']='snort'}
   
   for key, item in pairs(resp.whois.data) do
     as_name = item.as_name
-    country = item.org_country_code:upper()
+    if type(item.org_country_code) == "table" then
+      country = ''
+    else
+      country = item.org_country_code:upper()
+    end
     if type(item.city) == "table" then
       city = ''
     else
@@ -100,7 +103,7 @@ local function format_output(resp)
     end
   end
 
-  for key, item in pairs(resp.tags) do
+  for key, item in pairs(resp.issues) do
     if item == true then
       key = tag_str[key]
       table.insert(tag_table,key)
@@ -119,9 +122,9 @@ local function format_output(resp)
 
   for key, item in pairs(resp.score) do 
     if key == 'inbound' then
-      score_table['inbound'] = score_to_str[item]
+      score_table['inbound'] = item
     else
-      score_table['outbound'] = score_to_str[item]
+      score_table['outbound'] = item
     end
   end
 
@@ -265,7 +268,7 @@ prerule = function ()
   if (resp.status == 401) then
     stdnse.verbose1("Error: Your CriminalIP API key (%s) is invalid", registry.apiKey)
     return false
-    
+
   elseif (resp.status ~= 200) then
     stdnse.verbose1("Error: An unexpected error occured")  
     -- Prevent further stages from running
