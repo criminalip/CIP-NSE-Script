@@ -19,7 +19,7 @@ Criminal IP is a comprehensive OSINT-based Cyber Threat Intelligence (CTI) provi
 The NSE Script plugin integrated with the Criminal IP CTI search engine provides network scanning capabilities to display general information about IP addresses, including WHOIS data, running products and versions, CVE details, and more.
 
 This plugin utilizes Port scan information from Criminal IP v1/asset/ip/report to gather information about the IP you want to scan, including WHOIS data and details about open ports.
-For more details, please visit: https://www.criminalip.io/developer/api/get-ip-data.
+For more details, please visit: https://www.criminalip.io/developer/api/get-asset-ip-report.
 
 
 
